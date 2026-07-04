@@ -12,7 +12,13 @@ function DynamicSkills() {
   const [selectedSkill, setSelectedSkill] = useState<{id: string, name: string, description?: string} | null>(null);
 
   useEffect(() => {
-    fetch('/api/skills').then(res => res.json()).then(data => setSkills(data));
+    fetch('/api/skills')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setSkills(data);
+        else console.error("Failed to load skills:", data);
+      })
+      .catch(err => console.error("Error fetching skills:", err));
   }, []);
 
   if (skills.length === 0) return <p className="text-muted-foreground animate-pulse">Loading skills...</p>;
