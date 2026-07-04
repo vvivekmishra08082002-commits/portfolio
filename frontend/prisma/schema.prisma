@@ -53,6 +53,7 @@ model Certificate {
   name        String
   issuer      String
   link        String?
+  imageUrl    String?
 }
 
 model Achievement {

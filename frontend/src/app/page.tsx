@@ -249,19 +249,25 @@ function DynamicSectionRenderer({ endpoint }: { endpoint: string }) {
         {data.map((item, i) => (
           <div key={i} className="glass p-8 rounded-3xl border border-border/50 flex flex-col gap-6 shadow-xl hover:border-primary/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
             <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+            
+            {item.imageUrl && (
+              <div className="w-full h-48 rounded-2xl overflow-hidden relative border border-border/30 shadow-inner z-10">
+                <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+            )}
+
             <div className="flex justify-between items-start z-10">
               <div className="flex flex-col">
                 <span className="text-primary font-black uppercase tracking-widest text-xs mb-2">Certification</span>
-                <h3 className="text-2xl font-extrabold leading-tight mb-2">{item.title}</h3>
+                <h3 className="text-2xl font-extrabold leading-tight mb-2">{item.name}</h3>
                 <p className="text-foreground/80 font-bold">{item.issuer}</p>
               </div>
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                 <span className="text-primary text-xl">🎓</span>
               </div>
             </div>
-            {item.issueDate && <div className="text-sm font-mono text-muted-foreground z-10 mt-auto">Issued: {item.issueDate}</div>}
-            {item.credentialUrl && (
-              <a href={item.credentialUrl} target="_blank" className="z-10 mt-2 inline-flex items-center gap-2 text-primary font-bold hover:underline">
+            {item.link && (
+              <a href={item.link} target="_blank" className="z-10 mt-2 inline-flex items-center gap-2 text-primary font-bold hover:underline">
                 View Credential &rarr;
               </a>
             )}
