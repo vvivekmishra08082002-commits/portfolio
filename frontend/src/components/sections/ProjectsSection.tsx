@@ -5,7 +5,12 @@ export function ProjectsSection() {
   const [projectsData, setProjectsData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/api/projects').then(res => res.json()).then(data => setProjectsData(data));
+    fetch('/api/projects')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setProjectsData(data);
+      })
+      .catch(console.error);
   }, []);
 
   return (
