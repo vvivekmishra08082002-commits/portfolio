@@ -2,18 +2,21 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const handler = NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "default_secret_key_123456789",
+  pages: {
+    signIn: '/login',
+  },
   providers: [
     CredentialsProvider({
-      name: "Admin Login",
+      name: "OTP Login",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "admin" },
-        password: { label: "Password", type: "password" }
+        phone: { label: "Phone Number", type: "text" },
+        otp: { label: "OTP", type: "text" }
       },
       async authorize(credentials) {
         if (
-          credentials?.username === process.env.ADMIN_USER &&
-          credentials?.password === process.env.ADMIN_PASS
+          credentials?.phone === "8103791984" &&
+          credentials?.otp === "123456"
         ) {
           return { id: "1", name: "Admin" };
         }
