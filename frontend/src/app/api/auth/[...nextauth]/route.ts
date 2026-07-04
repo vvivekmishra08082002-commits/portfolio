@@ -16,7 +16,7 @@ const handler = NextAuth({
       async authorize(credentials) {
         if (
           credentials?.phone === "8103791984" &&
-          credentials?.otp === "123456"
+          credentials?.otp === "9300623115"
         ) {
           return { id: "1", name: "Admin" };
         }
