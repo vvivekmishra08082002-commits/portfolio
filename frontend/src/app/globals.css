@@ -131,6 +131,26 @@
 
 @layer utilities {
   .glass {
-    @apply bg-background/60 backdrop-blur-md border border-border/50 shadow-sm;
+    @apply bg-background/60 backdrop-blur-xl border border-border/40 shadow-lg transition-all duration-500 relative overflow-hidden;
+  }
+  
+  .dark .glass {
+    @apply bg-black/40 border-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.6)];
+  }
+  
+  html:not(.dark) .glass {
+    @apply bg-white/70 border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.04)];
+  }
+
+  .glass:hover {
+    @apply -translate-y-2 border-primary/50;
+  }
+  
+  .dark .glass:hover {
+    @apply shadow-[0_0_40px_rgba(100,100,255,0.1)] ring-1 ring-primary/20;
+  }
+
+  html:not(.dark) .glass:hover {
+    @apply shadow-[0_15px_40px_rgba(0,0,0,0.08)] ring-1 ring-primary/20;
   }
 }
