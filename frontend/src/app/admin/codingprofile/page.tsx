@@ -43,8 +43,8 @@ export default function AdminCodingProfile() {
       <div className="glass p-6 rounded-xl border border-border/50">
         <h2 className="text-xl font-bold mb-4">Add New CodingProfile</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl">
-          <input name="platform" required type="text" placeholder="platform" className="p-3 rounded-md bg-background border border-border" />\n          <input name="username" required type="text" placeholder="username" className="p-3 rounded-md bg-background border border-border" />\n          <input name="link" required type="text" placeholder="link" className="p-3 rounded-md bg-background border border-border" />
-          <button type="submit" className="py-3 bg-primary text-primary-foreground font-bold rounded-md hover:opacity-90">Add CodingProfile</button>
+          <input name="platform" required type="text" placeholder="platform" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />\n          <input name="username" required type="text" placeholder="username" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />\n          <input name="link" required type="text" placeholder="link" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
+          <button type="submit" className="py-4 bg-primary text-primary-foreground font-black tracking-wider uppercase rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg hover:shadow-primary/25">Add CodingProfile</button>
         </form>
       </div>
 

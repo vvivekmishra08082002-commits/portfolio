@@ -58,9 +58,9 @@ export default function AdminCertificate() {
       <div className="glass p-6 rounded-xl border border-border/50">
         <h2 className="text-xl font-bold mb-4">Add New Certificate</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl">
-          <input name="name" required type="text" placeholder="name" className="p-3 rounded-md bg-background border border-border" />
-          <input name="issuer" required type="text" placeholder="issuer" className="p-3 rounded-md bg-background border border-border" />
-          <input name="link" required type="text" placeholder="link" className="p-3 rounded-md bg-background border border-border" />
+          <input name="name" required type="text" placeholder="name" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
+          <input name="issuer" required type="text" placeholder="issuer" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
+          <input name="link" required type="text" placeholder="link" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
           
           <label className="flex flex-col gap-2">
             <span className="font-bold text-sm">Certificate Image (Optional)</span>
