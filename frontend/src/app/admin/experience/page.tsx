@@ -42,11 +42,11 @@ export default function AdminExperience() {
       <div className="glass p-6 rounded-xl border border-border/50">
         <h2 className="text-xl font-bold mb-4">Add New Experience</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl">
-          <input name="company" required type="text" placeholder="Company" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
-          <input name="role" required type="text" placeholder="Role" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
-          <input name="dateRange" required type="text" placeholder="Date Range" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
-          <textarea name="description" required placeholder="Description" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
-          <button type="submit" className="py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-sm text-sm">Add Experience</button>
+          <input name="company" required type="text" placeholder="Company" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
+          <input name="role" required type="text" placeholder="Role" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
+          <input name="dateRange" required type="text" placeholder="Date Range" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
+          <textarea name="description" required placeholder="Description" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
+          <button type="submit" className="group relative py-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground font-black tracking-widest uppercase rounded-2xl hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-[0_10px_20px_rgba(var(--primary),0.3)] hover:shadow-[0_15px_30px_rgba(var(--primary),0.5)] overflow-hidden">Add Experience</button>
         </form>
       </div>
 

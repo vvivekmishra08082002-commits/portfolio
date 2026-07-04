@@ -40,3 +40,20 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
   }
 }
+
+export async function PUT(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: "Missing ID" }, { status: 400 });
+    
+    const body = await req.json();
+    await prisma.message.update({
+      where: { id },
+      data: { isRead: body.isRead }
+    });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to update" }, { status: 500 });
+  }
+}

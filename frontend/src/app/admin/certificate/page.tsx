@@ -58,9 +58,9 @@ export default function AdminCertificate() {
       <div className="glass p-6 rounded-xl border border-border/50">
         <h2 className="text-xl font-bold mb-4">Add New Certificate</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl">
-          <input name="name" required type="text" placeholder="name" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
-          <input name="issuer" required type="text" placeholder="issuer" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
-          <input name="link" required type="text" placeholder="link" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
+          <input name="name" required type="text" placeholder="name" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
+          <input name="issuer" required type="text" placeholder="issuer" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
+          <input name="link" required type="text" placeholder="link" className="w-full p-4 rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] hover:bg-background/60 text-sm" />
           
           <label className="flex flex-col gap-2">
             <span className="font-bold text-sm">Certificate Image (Optional)</span>
