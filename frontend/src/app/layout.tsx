@@ -4,24 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import dynamic from "next/dynamic";
+import { ClientAnimations } from "@/components/animations/ClientAnimations";
 
-const PageLoader = dynamic(
-  () => import("@/components/animations/PageLoader").then((mod) => mod.PageLoader),
-  { ssr: false }
-);
-const ScrollProgress = dynamic(
-  () => import("@/components/animations/ScrollProgress").then((mod) => mod.ScrollProgress),
-  { ssr: false }
-);
-const CustomCursor = dynamic(
-  () => import("@/components/animations/CustomCursor").then((mod) => mod.CustomCursor),
-  { ssr: false }
-);
-const ThreeBackground = dynamic(
-  () => import("@/components/animations/ThreeBackground").then((mod) => mod.ThreeBackground),
-  { ssr: false }
-);
 const inter = Inter({ subsets: ["latin"] });
 
 export const viewport = {
@@ -71,10 +55,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PageLoader />
-          <ScrollProgress />
-          <CustomCursor />
-          <ThreeBackground />
+          <ClientAnimations />
           <Navbar />
           <main className="flex-1 flex flex-col pt-24">{children}</main>
           <Footer />
