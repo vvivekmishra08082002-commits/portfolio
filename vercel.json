@@ -1,16 +1,17 @@
 {
-  "services": {
-    "frontend": {
-      "root": "frontend",
-      "framework": "nextjs"
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
     },
-    "backend": {
-      "root": "backend",
-      "framework": "fastapi"
+    {
+      "src": "backend/main.py",
+      "use": "@vercel/python"
     }
-  },
+  ],
   "rewrites": [
-    { "source": "/api/backend/(.*)", "destination": "/backend/$1" },
+    { "source": "/api/(.*)", "destination": "/backend/main.py" },
     { "source": "/(.*)", "destination": "/frontend/$1" }
   ]
 }
