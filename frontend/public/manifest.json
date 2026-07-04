@@ -1,0 +1,16 @@
+{
+  "name": "Vivek Mishra Portfolio",
+  "short_name": "Vivek's Portfolio",
+  "description": "Enterprise portfolio of Vivek Mishra, Software Engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
+    }
+  ]
+}
