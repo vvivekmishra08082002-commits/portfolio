@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+process.env.NEXTAUTH_URL = "https://portfolio-at8f.vercel.app/api/auth";
+
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET || "default_secret_key_123456789",
   pages: {
