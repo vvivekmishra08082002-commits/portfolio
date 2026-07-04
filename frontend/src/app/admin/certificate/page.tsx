@@ -81,13 +81,30 @@ export default function AdminCertificate() {
         <h2 className="text-xl font-bold mb-4">Existing Certificates</h2>
         <div className="flex flex-col gap-4">
           {Array.isArray(data) ? data.map((item: any) => (
-            <div key={item.id} className="p-4 bg-background border border-border/50 rounded-lg flex justify-between items-start">
-              <div className="flex-1 overflow-hidden">
-                <p className="font-bold">{item.name}</p>
-                <p className="text-sm text-muted-foreground">{item.issuer}</p>
-                {item.imageUrl && <img src={item.imageUrl} className="h-16 mt-2 rounded" alt={item.name} />}
+            
+            <div key={item.id} className="group relative bg-background/40 backdrop-blur-3xl p-6 rounded-3xl border border-white/10 flex flex-col gap-4 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:shadow-[0_0_40px_rgba(var(--primary),0.3)] transition-all duration-500 hover:-translate-y-2 hover:bg-background/60">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              
+              <div className="flex justify-between items-start gap-4 relative z-10">
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
+                  {Object.entries(item).filter(([k]) => k !== 'id' && k !== 'createdAt' && k !== 'updatedAt').map(([key, val]) => (
+                    <div key={key} className="flex flex-col">
+                      <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-1.5 opacity-80">{key}</span>
+                      <span className="text-sm font-semibold text-foreground break-words drop-shadow-md">
+                        {typeof val === 'string' && val.startsWith('data:image') 
+                          ? <img src={val} alt={key} className="h-24 w-auto rounded-xl border border-white/20 mt-2 object-contain shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                          : typeof val === 'string' && (val.startsWith('http') || val.startsWith('www'))
+                          ? <a href={val} target="_blank" rel="noreferrer" className="text-secondary hover:text-primary transition-colors hover:underline truncate block">{val}</a>
+                          : String(val)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <button onClick={() => handleDelete(item.id)} className="shrink-0 p-3 text-destructive/70 hover:bg-destructive hover:text-white rounded-2xl transition-all duration-300 shadow-sm border border-destructive/20 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:-translate-y-1 hover:scale-110 active:scale-95">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
               </div>
-              <button onClick={() => handleDelete(item.id)} className="bg-red-500/10 text-red-500 px-3 py-1 rounded text-sm hover:bg-red-500 hover:text-white transition-colors ml-4 shrink-0">Delete</button>
             </div>
           )) : <p className="text-muted-foreground">Failed to load.</p>}
         </div>

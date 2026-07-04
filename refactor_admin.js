@@ -29,51 +29,30 @@ const newCardDesign = `
               </div>
             </div>`;
 
-const oldCardString = `<div key={item.id} className="bg-card p-5 rounded-xl border border-border flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start gap-4">
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-6">
-                  {Object.entries(item).filter(([k]) => k !== 'id' && k !== 'createdAt' && k !== 'updatedAt').map(([key, val]) => (
-                    <div key={key} className="flex flex-col">
-                      <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{key}</span>
-                      <span className="text-sm font-medium text-foreground break-words">
-                        {typeof val === 'string' && val.startsWith('data:image') 
-                          ? <img src={val} alt={key} className="h-16 w-auto rounded border border-border mt-1 object-contain bg-muted/20" />
-                          : typeof val === 'string' && (val.startsWith('http') || val.startsWith('www'))
-                          ? <a href={val} target="_blank" rel="noreferrer" className="text-primary hover:underline truncate block">{val}</a>
-                          : String(val)}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <button onClick={() => handleDelete(item.id)} className="shrink-0 p-2 text-muted-foreground hover:bg-destructive hover:text-destructive-foreground rounded-lg transition-colors border border-transparent hover:border-destructive/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-                </button>
-              </div>
-            </div>`;
-
 function walkDir(dir) {
     let results = [];
     const list = fs.readdirSync(dir);
     list.forEach(file => {
-        const filePath = path.join(dir, file);
-        const stat = fs.statSync(filePath);
+        file = path.join(dir, file);
+        const stat = fs.statSync(file);
         if (stat && stat.isDirectory()) {
-            results = results.concat(walkDir(filePath));
-        } else if (file === 'page.tsx') {
-            results.push(filePath);
+            results = results.concat(walkDir(file));
+        } else if (file.endsWith('page.tsx') && !file.includes('messages')) {
+            results.push(file);
         }
     });
     return results;
 }
 
 const files = walkDir(adminDir);
-
-files.forEach(filePath => {
-    let content = fs.readFileSync(filePath, 'utf8');
+files.forEach(file => {
+    let content = fs.readFileSync(file, 'utf8');
     let modified = false;
 
-    if (content.includes(oldCardString)) {
-        content = content.split(oldCardString).join(newCardDesign.trim());
+    const cardRegex = /<div key=\{item\.id\}[^>]*>[\s\S]*?(?:<\/button>\s*<\/div>\s*<\/div>|<\/button>\s*<\/div>)/g;
+    
+    if (cardRegex.test(content)) {
+        content = content.replace(cardRegex, newCardDesign);
         modified = true;
     }
 
@@ -99,8 +78,8 @@ files.forEach(filePath => {
     }
 
     if (modified) {
-        fs.writeFileSync(filePath, content, 'utf8');
-        console.log("Refactored " + filePath);
+        fs.writeFileSync(file, content, 'utf8');
+        console.log(`Refactored ${file}`);
     }
 });
 
