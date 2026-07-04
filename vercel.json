@@ -11,7 +11,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/backend/(.*)", "destination": "/backend/main.py" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
+    { "source": "/api/backend/(.*)", "destination": "/backend/main.py" }
   ]
 }
