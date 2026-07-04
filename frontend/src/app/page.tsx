@@ -268,7 +268,7 @@ function DynamicSectionRenderer({ endpoint }: { endpoint: string }) {
             </div>
             {item.link && (
               <a href={item.link} target="_blank" className="z-10 mt-2 inline-flex items-center gap-2 text-primary font-bold hover:underline">
-                View Credential &rarr;
+                VIEW CERTIFICATE &rarr;
               </a>
             )}
           </div>
