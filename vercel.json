@@ -8,5 +8,9 @@
       "root": "backend",
       "framework": "fastapi"
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/api/backend/(.*)", "destination": "/backend/$1" },
+    { "source": "/(.*)", "destination": "/frontend/$1" }
+  ]
 }
