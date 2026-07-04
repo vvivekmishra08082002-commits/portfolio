@@ -34,10 +34,10 @@ export default function AdminProfile() {
       <div className="glass p-6 rounded-xl border border-border/50">
         <h2 className="text-xl font-bold mb-4">Edit Public Details</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl">
-          <input name="name" defaultValue={profile.name} required type="text" placeholder="Your Name" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
-          <input name="headline" defaultValue={profile.headline} required type="text" placeholder="Headline (e.g. Software Engineer)" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
-          <textarea name="bio" defaultValue={profile.bio} required placeholder="Short Bio" rows={4} className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
-          <input name="imageUrl" defaultValue={profile.imageUrl} type="url" placeholder="Profile Image URL (optional)" className="w-full p-4 rounded-xl bg-background/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all shadow-sm" />
+          <input name="name" defaultValue={profile.name} required type="text" placeholder="Your Name" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
+          <input name="headline" defaultValue={profile.headline} required type="text" placeholder="Headline (e.g. Software Engineer)" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
+          <textarea name="bio" defaultValue={profile.bio} required placeholder="Short Bio" rows={4} className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
+          <input name="imageUrl" defaultValue={profile.imageUrl} type="url" placeholder="Profile Image URL (optional)" className="w-full p-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors shadow-sm text-sm" />
           
           {profile.imageUrl && (
             <div className="mt-4">
@@ -46,7 +46,7 @@ export default function AdminProfile() {
             </div>
           )}
 
-          <button type="submit" className="py-4 bg-primary text-primary-foreground font-black tracking-wider uppercase rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg hover:shadow-primary/25">Save Profile</button>
+          <button type="submit" className="py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-sm text-sm">Save Profile</button>
         </form>
       </div>
     </div>
